@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block pageContent %}
+        <h1>Modificar Ingreso-Gasto</h1>
+        <h2>Instrucciones de uso</h2>
+        <ul>
+            <li>No pongas fechas posteriores a hoy</li>
+            <li>No pongas cantidades iguales a cero</li>
+        </ul>
+        <form action="/modificar/{{ registro[0] }}" method="post">
+                <label for="date">Fecha:</label>
+                <input type="date" name="date"
+                       id="date" 
+                       value="{{ registro[1] }}" required>
+
+                <label for="concept">Concepto:</label>
+                <input type="text" name="concept" 
+                       id="concept"
+                       placeholder="Introduce en que te has gastado la pasta"
+                       value="{{ registro[2] }}">
+
+                <label for="quantity">Cantidad</label>
+                <input type="number" name="quantity" 
+                       id="quantity"
+                       placeholder="Euros gastados o ingresados" 
+                       step="0.01"
+                       value="{{ registro[3] }}">
+
+                <input type="submit" value="Aceptar">
+        </form>
+        <article class="errores">
+                <ul>
+                        {% for error in msgErrors %}
+                        <li class="error">{{ error }}</li>
+                        {% endfor %}
+                </ul>
+        </article>
+        
+{% endblock %}

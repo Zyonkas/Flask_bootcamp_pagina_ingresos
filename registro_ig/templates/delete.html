@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block pageContent %}
+
+    <table>
+        <tr>
+            <td>Fecha:</td>
+            <td>{{ registro[1] }}</td>
+        </tr>
+        <tr>
+            <td>Concepto:</td>
+            <td>{{ registro[2] }}</td>
+        </tr>
+        <tr>
+            <td>Cantidad</td>
+            <td>{{ registro[3] }}</td>
+        </tr>
+    </table>
+    <form action="/borrar/{{ registro[0] }}" method="post">
+        <input type="submit" value="Aceptar">
+    </form>
+
+{% endblock %}
